@@ -30,9 +30,9 @@ public class RadioTest {
     public void minStation() {
         Radio stat = new Radio();
 
-        stat.setCurrentStation(-1);
+        stat.setCurrentStation(0);
 
-        int expected = 9;
+        int expected = 10;
         int actual = stat.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -66,10 +66,10 @@ public class RadioTest {
     public void prevStation() {
         Radio stat = new Radio();
 
-        stat.setCurrentStation(3);
+        stat.setCurrentStation(5);
         stat.prevStation();
 
-        int expected = 2;
+        int expected = 4;
         int actual = stat.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -165,6 +165,29 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void constructorTest() {
+        Radio stat = new Radio(30);
+        stat.setCurrentStation(0);
+        Assertions.assertEquals(30, stat.getAmountStation());
+        Assertions.assertEquals(30, stat.getCurrentStation());
+    }
+
+
+    @Test
+    public void prevStationDoubleClick() {
+        Radio stat = new Radio();
+
+        stat.setCurrentStation(-1);
+        stat.prevStation();
+
+        int expected = 9;
+        int actual = stat.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
 
 }
 
